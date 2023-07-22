@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class gun : MonoBehaviour
+public class Gun : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public GameObject bulletPreFab;
+    public Transform firePoint;
+    public float fireForce = 20f;
+
+    public void Fire()
     {
-        
+        GameObject bullet = Instantiate(bulletPreFab, firePoint.position, firePoint.rotation);
+        bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up*fireForce, ForceMode2D.Impulse);
     }
 }
