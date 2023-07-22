@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
-    public float speed;
+    public static float speed = 7f;
     public Rigidbody2D rb;
     public CircleCollider2D circleCollider;
     public Gun gun;
