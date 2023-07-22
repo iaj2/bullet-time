@@ -23,13 +23,13 @@ public class PowerUpText : MonoBehaviour
 
         if (PlayerPowerUp.powerReady == true)
         {
-            powerText.text = "POWERUP: READY";
+            powerText.text = "POWER UP: READY";
             powerCooldownText = 15;
         }
 
         else
         {
-            powerText.text = "POWERUP: " + cooldownSeconds.ToString();
+            powerText.text = "POWER UP: " + cooldownSeconds.ToString();
         }
 
 

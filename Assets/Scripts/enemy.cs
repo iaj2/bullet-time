@@ -98,6 +98,7 @@ public class Enemy : MonoBehaviour
         if(other.gameObject.CompareTag("Bullet")) 
         {
             Destroy(gameObject);
+            Bits.bits = 4;
 
         }
     }

@@ -42,6 +42,7 @@ public class PlayerPowerUp : MonoBehaviour
     void powerUp()
     {
         Time.timeScale = 0.5f;
+        Time.fixedDeltaTime = Time.timeScale * 0.01f;
         StartCoroutine("powerTime");
     }
 }
