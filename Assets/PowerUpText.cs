@@ -7,7 +7,7 @@ public class PowerUpText : MonoBehaviour
 {
 
     public TextMeshProUGUI powerText;
-    public float powerCooldownText = 30;
+    public float powerCooldownText = 15;
 
     // Start is called before the first frame update
     void Start()
@@ -18,12 +18,28 @@ public class PowerUpText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        powerText.text = "POWERUP: " + powerCooldownText;
+        int cooldownSeconds = Mathf.CeilToInt(powerCooldownText);
 
 
-        if(powerCooldownText > 0)
+        if (PlayerPowerUp.powerReady == true)
         {
-            powerCooldownText -= Time.deltaTime;
+            powerText.text = "POWERUP: READY";
+            powerCooldownText = 15;
+        }
+
+        else
+        {
+            powerText.text = "POWERUP: " + cooldownSeconds.ToString();
+        }
+
+
+
+
+        if (powerCooldownText > 0)
+        {
+            powerCooldownText -= Time.unscaledDeltaTime;
+
+            
         }
     }
 }

@@ -29,13 +29,13 @@ public class PlayerPowerUp : MonoBehaviour
 
     IEnumerator powerCooldown()
     {
-        yield return new WaitForSeconds(30);
+        yield return new WaitForSecondsRealtime(15);
         powerReady = true;
     }
 
     IEnumerator powerTime()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSecondsRealtime(5);
         Time.timeScale = 1f;
     }
 
