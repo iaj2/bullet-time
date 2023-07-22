@@ -6,21 +6,37 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
     public static float speed = 7f;
+    public float currentHealth = 1;
+    public bool alive = true;
     public Rigidbody2D rb;
     public CircleCollider2D circleCollider;
     public Gun gun;
 
-    public GameObject IdleAnim;
-    public GameObject FireAnim;
-    private float animCoolDown = 5f;
+    public HealthBar healthBar;
 
+    
     Vector2 mousePosition;
 
-    // Start is called before the first frame update
-    void Start()
+    private void UpdateHealth()
     {
-        IdleAnim.SetActive(true);
-        FireAnim.SetActive(false);
+
+        const float damage = 0.2f;
+        currentHealth -= damage;
+        healthBar.SetValue(currentHealth);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Check for hit
+        if (collision.gameObject.CompareTag("EnemyBullet"))
+        {
+            UpdateHealth();
+            // Check if dead
+            if (currentHealth <= 0)
+            {
+                alive = false;
+            }
+
+        }
     }
 
     // Update is called once per frame
@@ -60,33 +76,16 @@ public class playerMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             gun.Fire();
-            if (animCoolDown > 0)
-            {
-                FireAnim.SetActive(true);
-                IdleAnim.SetActive(false);
-                animCoolDown -= Time.deltaTime;
-                Debug.Log("Fires");
-            } else if (animCoolDown <= 0)
-            {
-                IdleAnim.SetActive(true);
-                FireAnim.SetActive(false);
-                animCoolDown = 5f;
-            }   
+                
         }
-        else
-        {
-            IdleAnim.SetActive(true);
-            FireAnim.SetActive(false);
-        }
-
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         // Player/gun rotation
         Vector2 aimDirection = mousePosition - rb.position;
-        float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x)*Mathf.Rad2Deg - 90f;
+        float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = aimAngle;
 
     }
