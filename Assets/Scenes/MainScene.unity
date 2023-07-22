@@ -1195,6 +1195,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2004451226}
+    - target: {fileID: 6137753098497773617, guid: 8e6d19bd8084d1246b8fc6abc9696bf7, type: 3}
+      propertyPath: shootDistance
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

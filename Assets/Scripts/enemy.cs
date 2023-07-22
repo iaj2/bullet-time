@@ -6,15 +6,25 @@ using UnityEngine.UIElements;
 public class Enemy : MonoBehaviour
 {
     public Transform player; //drag player into field to target player
-    public float speed;
-    public float rotateSpeed;
+    public Transform firePoint; //drag empty game object FirePoint ici
+    public GameObject enemyBulletPrefab; //drag enemy bullet prefab here
+
+    public float speed = 2f;
+    public float rotateSpeed = 5f;
+
+    public float shootDistance = 5f;
+    public float stopDistance = 3f;
+
+    public float fireRate;
+    private float timeToFire;
+    public float fireForce = 20f;
 
     public Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        timeToFire = fireRate;
     }
 
     // Update is called once per frame
@@ -29,12 +39,28 @@ public class Enemy : MonoBehaviour
         {
             GetTarget();
         }
+        if (Vector2.Distance(player.position, transform.position) <= shootDistance)
+        {
+            Shoot();
+
+        }
+
     }
     private void FixedUpdate()
     {
-        //move forwards
-        Vector2 direction = transform.up;
-        rb.velocity = direction * speed;
+        if (Vector2.Distance(player.position, transform.position) >= stopDistance)
+        {
+            //move forwards
+            Vector2 direction = transform.up;
+            rb.velocity = direction * speed;
+
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+        }
+        
+        
     }
 
     private void GetTarget()
@@ -50,7 +76,24 @@ public class Enemy : MonoBehaviour
         transform.localRotation = Quaternion.Slerp(transform.localRotation, q, rotateSpeed);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void Shoot()
+    {
+        if (timeToFire <= 0f)
+        {
+            GameObject bullet = Instantiate(enemyBulletPrefab, firePoint.position, firePoint.rotation);
+            bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
+            timeToFire = fireRate;
+
+        }else
+        {
+            timeToFire -= Time.deltaTime;
+
+        }
+
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) //death
     {
         if(other.gameObject.CompareTag("Bullet")) 
         {
