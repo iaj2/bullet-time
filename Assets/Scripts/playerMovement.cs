@@ -10,12 +10,17 @@ public class playerMovement : MonoBehaviour
     public CircleCollider2D circleCollider;
     public Gun gun;
 
+    public GameObject IdleAnim;
+    public GameObject FireAnim;
+    private float animCoolDown = 5f;
+
     Vector2 mousePosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        IdleAnim.SetActive(true);
+        FireAnim.SetActive(false);
     }
 
     // Update is called once per frame
@@ -55,6 +60,23 @@ public class playerMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             gun.Fire();
+            if (animCoolDown > 0)
+            {
+                FireAnim.SetActive(true);
+                IdleAnim.SetActive(false);
+                animCoolDown -= Time.deltaTime;
+                Debug.Log("Fires");
+            } else if (animCoolDown <= 0)
+            {
+                IdleAnim.SetActive(true);
+                FireAnim.SetActive(false);
+                animCoolDown = 5f;
+            }   
+        }
+        else
+        {
+            IdleAnim.SetActive(true);
+            FireAnim.SetActive(false);
         }
 
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
