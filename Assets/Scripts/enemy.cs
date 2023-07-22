@@ -49,4 +49,13 @@ public class Enemy : MonoBehaviour
         Quaternion q = Quaternion.Euler(new Vector3(0, 0, angle));
         transform.localRotation = Quaternion.Slerp(transform.localRotation, q, rotateSpeed);
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("Bullet")) 
+        {
+            Destroy(gameObject);
+
+        }
+    }
 }
