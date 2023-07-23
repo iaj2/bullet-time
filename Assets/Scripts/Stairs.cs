@@ -4,23 +4,12 @@ using UnityEngine;
 
 public class Stairs : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            playerMovement.speed = 4;
+            Player.speed = 4;
 
         }
     }
@@ -28,7 +17,7 @@ public class Stairs : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            playerMovement.speed = 7;
+            Player.speed = 7;
 
         }
     }
