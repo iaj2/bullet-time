@@ -162,6 +162,7 @@ MonoBehaviour:
   player: {fileID: 0}
   firePoint: {fileID: 1969946958036402160}
   enemyBulletPrefab: {fileID: 5784653520860174229, guid: 047970571e657fb418d4925cc8b8230c, type: 3}
+  deadEnemy: {fileID: 2213869118037372578, guid: 67ab7a6963e79a242947ee9c996030f0, type: 3}
   speed: 2
   rotateSpeed: 5
   shootDistance: 20

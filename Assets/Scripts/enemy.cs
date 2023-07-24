@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public Transform player; //drag player into field to target player
     public Transform firePoint; //drag empty game object FirePoint ici
     public GameObject enemyBulletPrefab; //drag enemy bullet prefab here
+    public GameObject deadEnemy; //dead enemy prefab here
 
     public static bool alive;
 
@@ -28,6 +29,7 @@ public class Enemy : MonoBehaviour
     {
         timeToFire = fireRate;
         alive = true;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
@@ -101,8 +103,9 @@ public class Enemy : MonoBehaviour
         if(other.gameObject.CompareTag("Bullet")) 
         {
             alive = false;
+            Instantiate(deadEnemy, transform.position, transform.localRotation);
             Destroy(gameObject);
-            Bits.bits = 4;
+            Bits.bits += 4;
 
         }
     }
