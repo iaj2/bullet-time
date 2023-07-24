@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
-    public static float speed = 7f;
+    public static float speed = 5f;
     public float currentHealth = 1;
     public bool alive = true;
     public Rigidbody2D rb;
