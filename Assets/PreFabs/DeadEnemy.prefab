@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7583469271854829085}
   - component: {fileID: 2354305032430045697}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: DeadSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,6 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4689743928879306667}
+  - component: {fileID: 1829294569466898074}
   m_Layer: 0
   m_Name: DeadEnemy
   m_TagString: Untagged
@@ -116,3 +117,15 @@ Transform:
   - {fileID: 7583469271854829085}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1829294569466898074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2213869118037372578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0575fb1d133a95409f103a31a6d56b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
