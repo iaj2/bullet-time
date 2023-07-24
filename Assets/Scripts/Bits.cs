@@ -16,6 +16,6 @@ public class Bits : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bitText.text = "BITS: " + bits;
+        bitText.text = "BITS: " + Mathf.Round(bits);
     }
 }

@@ -12,6 +12,9 @@ public class playerMovement : MonoBehaviour
     public CircleCollider2D circleCollider;
     public Gun gun;
 
+    public GameObject particles;
+    private float particleCooldown = 1;
+
     public HealthBar healthBar;
 
     
@@ -19,8 +22,7 @@ public class playerMovement : MonoBehaviour
 
     private void UpdateHealth()
     {
-
-        const float damage = 0.2f;
+        const float damage = 0.02f;
         currentHealth -= damage;
         healthBar.SetValue(currentHealth);
     }
@@ -35,6 +37,37 @@ public class playerMovement : MonoBehaviour
             {
                 alive = false;
             }
+
+        }
+    }
+    private void FocusHeal()
+    {
+        if (Bits.bits > 0 && currentHealth < 1)
+        {
+            if (particleCooldown > 0)
+            {
+                Instantiate(particles, transform.position, transform.rotation);
+
+                particleCooldown -= 1;
+            } else if (particleCooldown < 0)
+            {
+                particleCooldown += 0.01f * Time.deltaTime;
+
+            }
+            
+            Bits.bits -= 1 * Time.deltaTime;
+            currentHealth += 0.01f * Time.deltaTime;
+            healthBar.SetValue(currentHealth);
+        }
+        else if (Bits.bits <= 0)
+        {
+            Debug.Log("Out of bits!");
+
+        }
+        else if (currentHealth >= 1)
+        {
+            currentHealth = 1;
+            Debug.Log("Health maxxed out.");
 
         }
     }
@@ -79,6 +112,13 @@ public class playerMovement : MonoBehaviour
                 
         }
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        //healing
+        if (Input.GetKey(KeyCode.F))
+        {
+            FocusHeal();
+
+        }
     }
 
     void FixedUpdate()

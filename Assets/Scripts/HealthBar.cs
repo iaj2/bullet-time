@@ -18,7 +18,7 @@ public class HealthBar : MonoBehaviour
     public void SetValue(float health)
     {
         slider.value = health;
-        healthText.text = "Health: " + (health*100).ToString();
+        healthText.text = "Health: " + Mathf.Round(health*100).ToString();
     }
 
 }
