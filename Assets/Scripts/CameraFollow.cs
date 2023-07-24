@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
     public GameObject followObject;
     public Vector2 followOffset;
     private Vector2 threshold;
-    public float speed = 3f;
+    public static float speed = 7f;
     public Rigidbody2D rb;
 
     // Start is called before the first frame update

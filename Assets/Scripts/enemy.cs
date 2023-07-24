@@ -102,7 +102,7 @@ public class Enemy : MonoBehaviour
         {
             alive = false;
             Destroy(gameObject);
-            Bits.bits = 4;
+            Bits.bits += 4;
 
         }
     }

@@ -37,12 +37,16 @@ public class PlayerPowerUp : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(5);
         Time.timeScale = 1f;
+        playerMovement.speed = 5;
+        CameraFollow.speed = 5;
     }
 
     void powerUp()
     {
-        Time.timeScale = 0.5f;
+        Time.timeScale = 0.2f;
         Time.fixedDeltaTime = Time.timeScale * 0.01f;
+        playerMovement.speed = 25;
+        CameraFollow.speed = 27;
         StartCoroutine("powerTime");
     }
 }
