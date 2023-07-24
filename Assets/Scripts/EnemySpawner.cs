@@ -25,11 +25,11 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator spawnEnemy(float interval, GameObject enemy)
     {
         yield return new WaitForSecondsRealtime(interval);
-        GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-5.3f, -5), Random.Range(-0.22f, -2.16f), 0), Quaternion.identity);
+        GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-5.1f, -5), Random.Range(-0.22f, -2.16f), 0), Quaternion.identity);
         yield return new WaitForSecondsRealtime(interval);
         GameObject newEnemy2 = Instantiate(enemy, new Vector3(Random.Range(3.33f, 5.6f), Random.Range(7.11f, 7f), 0), Quaternion.identity);
         yield return new WaitForSecondsRealtime(interval);
-        GameObject newEnemy3 = Instantiate(enemy, new Vector3(Random.Range(-11.79f, -11.50f), Random.Range(8.68f, 10.38f), 0), Quaternion.identity);
+        GameObject newEnemy3 = Instantiate(enemy, new Vector3(Random.Range(-11.60f, -11.50f), Random.Range(8.68f, 10.38f), 0), Quaternion.identity);
         StartCoroutine(spawnEnemy(interval, enemy));
     }
 }

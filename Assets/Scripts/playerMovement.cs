@@ -7,7 +7,7 @@ public class playerMovement : MonoBehaviour
 {
     public static float speed = 5f;
     public float currentHealth = 1;
-    public bool alive = true;
+    public static bool alive = true;
     public Rigidbody2D rb;
     public CircleCollider2D circleCollider;
     public Gun gun;
@@ -16,6 +16,12 @@ public class playerMovement : MonoBehaviour
 
     
     Vector2 mousePosition;
+
+    private void Start()
+    {
+        alive = true;
+        Time.timeScale = 1;
+    }
 
     private void UpdateHealth()
     {

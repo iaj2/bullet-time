@@ -13,7 +13,7 @@ public class PlayerDead : MonoBehaviour
     public GameObject enemySpawner;
     public TextMeshProUGUI bitsScore;
     public TextMeshProUGUI killScore;
-    public static float kills;
+    public static float kills = 0;
     public GameObject player;
 
     // Start is called before the first frame update
@@ -36,7 +36,7 @@ public class PlayerDead : MonoBehaviour
 
         killScore.text = "Kills: " + kills;
 
-        bitsScore.text = "Max bits " + Bits.maxBits;
+        bitsScore.text = "Max bits " + Mathf.Round(Bits.maxBits);
     }
 
     public void Replay()

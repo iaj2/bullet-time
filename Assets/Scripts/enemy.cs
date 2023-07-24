@@ -107,6 +107,7 @@ public class Enemy : MonoBehaviour
             Instantiate(deadEnemy, transform.position, transform.localRotation);
             Instantiate(deadEffect, transform.position, transform.localRotation);
             Destroy(gameObject);
+            PlayerDead.kills++;
             Bits.bits += 4;
 
         }
