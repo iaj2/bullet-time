@@ -12,9 +12,6 @@ public class playerMovement : MonoBehaviour
     public CircleCollider2D circleCollider;
     public Gun gun;
 
-    public GameObject particles;
-    private float particleCooldown = 1;
-
     public HealthBar healthBar;
 
     
@@ -43,18 +40,7 @@ public class playerMovement : MonoBehaviour
     private void FocusHeal()
     {
         if (Bits.bits > 0 && currentHealth < 1)
-        {
-            if (particleCooldown > 0)
-            {
-                Instantiate(particles, transform.position, transform.rotation);
-
-                particleCooldown -= 1;
-            } else if (particleCooldown < 0)
-            {
-                particleCooldown += 0.01f * Time.deltaTime;
-
-            }
-            
+        {         
             Bits.bits -= 1 * Time.deltaTime;
             currentHealth += 0.01f * Time.deltaTime;
             healthBar.SetValue(currentHealth);

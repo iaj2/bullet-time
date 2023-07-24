@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public Transform firePoint; //drag empty game object FirePoint ici
     public GameObject enemyBulletPrefab; //drag enemy bullet prefab here
     public GameObject deadEnemy; //dead enemy prefab here
+    public GameObject deadEffect;
 
     public static bool alive;
 
@@ -104,6 +105,7 @@ public class Enemy : MonoBehaviour
         {
             alive = false;
             Instantiate(deadEnemy, transform.position, transform.localRotation);
+            Instantiate(deadEffect, transform.position, transform.localRotation);
             Destroy(gameObject);
             Bits.bits += 4;
 
