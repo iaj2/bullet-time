@@ -1,8 +1,10 @@
-# lame-jam-game
+# Bullet Time
 
-Game created for a 2-day game jam called 'lame jam'. 
+See live --> https://bananabros.itch.io/bullet-time
+
+The Matrix themed game created for a 2-day game jam called 'lame jam'. 
 Created by the banana bros:
-- Me (on contract)
+- Me
 - Matthew
 - Andrew
 
